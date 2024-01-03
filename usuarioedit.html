@@ -110,7 +110,7 @@
                         </div>
                         <div class="mb-3 text-center">
                           <br><br>
-                          <button type="submit" class="btn btn-primary">Modificar Usuario</button>
+                          <button type="submit" class="btn btn-primary" id="enviar">Modificar Usuario</button>
                         </div>
                       </form>
                     </div>
@@ -128,7 +128,7 @@
       crossorigin="anonymous">
     </script>
     <script>
-        document.getElementById("lista").onclick = function(evento){
+        document.getElementById("enviar").onclick = function(evento){
             evento.preventDefault();
             window.location.href = "usuariolos.html";
         };
