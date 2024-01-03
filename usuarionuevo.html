@@ -110,7 +110,7 @@
                         </div>
                         <div class="mb-3 text-center">
                           <br><br>
-                          <button type="submit" class="btn btn-primary">Agregar Usuario</button>
+                          <button type="submit" class="btn btn-primary" id="enviar">Agregar Usuario</button>
                         </div>
                       </form>
                     </div>
@@ -128,21 +128,9 @@
       crossorigin="anonymous">
     </script>
     <script>
-        document.getElementById("lista").onclick = function(evento){
-            let target = evento.target;
-            while(target.id === ""){
-                target = target.parentNode;
-            }
-            switch(target.id){
-                case "usuario":
-                    window.location.href = "usuariouno.html";
-                    break;
-                case "nuevo":
-                    window.location.href = "usuarionuevo.html";
-                    break;
-                case "lista":
-                    break;
-            }
+        document.getElementById("enviar").onclick = function(evento){
+            evento.preventDefault();
+            window.location.href = "usuariolos.html";
         };
     </script>
   </body>
