@@ -245,7 +245,7 @@ function limpiarTabla(){
 }
 
 function getImportacion(id){
-    let str = localStorage.getItem("importacion-"+id);
+    let str = sessionStorage.getItem("importacion-"+id);
     if(str){
         let obj = JSON.parse(str);
         return Promise.resolve(obj);
@@ -253,13 +253,13 @@ function getImportacion(id){
     let cmd = "cmd=importacion_una";
     cmd += "&id="+id;
     return loadGet(cmd).then((res) => {
-        localStorage.setItem("importacion-"+id,JSON.stringify(res));
+        sessionStorage.setItem("importacion-"+id,JSON.stringify(res));
         return Promise.resolve(res);
     });
 }
 
 function getUnaReserva(id){
-    let str = localStorage.getItem("reserva-"+id);
+    let str = sessionStorage.getItem("reserva-"+id);
     if(str){
         let obj = JSON.parse(str);
         return Promise.resolve(obj);
@@ -267,13 +267,13 @@ function getUnaReserva(id){
     let cmd = "cmd=reserva_una";
     cmd += "&id="+id;
     return loadGet(cmd).then((res) => {
-        localStorage.setItem("reserva-"+id,JSON.stringify(res));
+        sessionStorage.setItem("reserva-"+id,JSON.stringify(res));
         return Promise.resolve(res);
     });
 }
 
 function getUnVehiculo(vin){
-    let str = localStorage.getItem("vehiculo-"+vin);
+    let str = sessionStorage.getItem("vehiculo-"+vin);
     if(str){
         let obj = JSON.parse(str);
         return Promise.resolve(obj);
@@ -281,7 +281,7 @@ function getUnVehiculo(vin){
     let cmd = "cmd=item_uno";
     cmd += "&vin="+vin;
     return loadGet(cmd).then((res) => {
-        localStorage.setItem("vehiculo-"+vin,JSON.stringify(res));
+        sessionStorage.setItem("vehiculo-"+vin,JSON.stringify(res));
         return Promise.resolve(res);
     });
 }
@@ -594,7 +594,7 @@ document.getElementById("body-hora").onclick = function(evento){//?? se dispara 
         myModal.hide();
         myModal = null;
     }
-    localStorage.removeItem("reserva-"+id);
+    sessionStorage.removeItem("reserva-"+id);
     getUnaReserva(id).then(pintarUnaReserva);
 };
 
