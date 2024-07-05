@@ -802,12 +802,10 @@ document.getElementById("entregado").onclick = function(){
         return;
     }
     
-    /*
     if(miUsuarioTipo !== "controlador"){
         Alerta.set("No está autorizado");
         return;
     }
-    */
     
     let elem = document.getElementById("reservaid");
     if(!elem){
@@ -835,7 +833,18 @@ document.getElementById("entregado").onclick = function(){
     });
 };
 
-iniciar();
+function forzarLogin(){
+    let cmd = "cmd=login";
+    cmd += "&usuario=ernesto.roca@gmail.com";
+    cmd += "&clave=supersecreta";
+    return loadPost(cmd).then(msg => {
+        localStorage.setItem("miUsuarioTipo",msg.usrtp);
+        localStorage.setItem("miUsuarioId",msg.usrid);
+        return Promise.resolve();
+    });
+}
+
+forzarLogin().then(iniciar);
 
     </script>
   </body>
